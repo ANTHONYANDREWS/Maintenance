@@ -1,6 +1,7 @@
 package excelfiles;
 
 import java.io.File;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,25 +19,28 @@ public class WriteExcel {
 	
 	  private static String[] columns = { "ID", "MACHINE_NAME", "MAINTENANCE_TIME"};
 	  
-	  private static List<Machines> machines = new ArrayList<Machines>();
+	   static List<Machines> list = new ArrayList<Machines>();
 	  
 	
-	  public void writefromExcel(String file)  throws IOException{
+	  public void insertMachines(Machines machines)  throws IOException{
+		  list.add(machines);
+		  createExcel(machines);
 
 		
-		machines.add(new Machines(1,"CNC Machine","3months"));
-		machines.add(new Machines(2,"Milling Machine","4months"));
-		machines.add(new Machines(3,"Compressor Machine","12months"));
-		machines.add(new Machines(4,"Power Pressed Machine","3months"));
-		machines.add(new Machines(5,"Fly press Machine","2months"));
-		machines.add(new Machines(6,"Slotting","3months"));
-		machines.add(new Machines(7,"Mechanical shearing machine","6months"));
-		machines.add(new Machines(8,"Shaping Machine","5months"));
-		machines.add(new Machines(9,"Hydraulic press break Machine","7months"));
-		machines.add(new Machines(10,"Universal Turning Machine","10months"));
-		machines.add(new Machines(11,"Drilling Machine","4months"));
-		machines.add(new Machines(12,"Pipe bending Machine","3months"));
-		
+		list.add(new Machines(1,"CNC Machine","3months"));
+		list.add(new Machines(2,"Milling Machine","4months"));}
+//		machines.add(new Machines(3,"Compressor Machine","12months"));
+//		machines.add(new Machines(4,"Power Pressed Machine","3months"));
+//		machines.add(new Machines(5,"Fly press Machine","2months"));
+//		machines.add(new Machines(6,"Slotting","3months"));
+//		machines.add(new Machines(7,"Mechanical shearing machine","6months"));
+//		machines.add(new Machines(8,"Shaping Machine","5months"));
+//		machines.add(new Machines(9,"Hydraulic press break Machine","7months"));
+//		machines.add(new Machines(10,"Universal Turning Machine","10months"));
+//		machines.add(new Machines(11,"Drilling Machine","4months"));
+//		machines.add(new Machines(12,"Pipe bending Machine","3months"));
+//		
+	private void createExcel(Machines machines) throws IOException {
 
 	//Blank workbook
 	XSSFWorkbook workbook = new XSSFWorkbook(); 
@@ -55,7 +59,7 @@ public class WriteExcel {
  // Create Other rows and cells with contacts data
     int rowNum = 1;
 
-    for (Machines machine : machines) {
+    for (Machines machine : list) {
       Row row = sheet.createRow(rowNum++);
       row.createCell(0).setCellValue(machine.ID);
       row.createCell(1).setCellValue(machine.machineName);

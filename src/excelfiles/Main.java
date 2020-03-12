@@ -18,13 +18,13 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		
-		Manualmachines manualmachines = new Manualmachines();    
-		
-		int iD = 0;
-		String machineName = null;
-		String maintenanceTime = null;
-		
-        Machines machines = new Machines(iD, machineName, maintenanceTime);
+//		Manualmachines manualmachines = new Manualmachines();    
+//		
+//		int iD = 0;
+//		String machineName = null;
+//		String maintenanceTime = null;
+//		
+//        Machines machines = new Machines(iD, machineName, maintenanceTime);
 		
 		System.out.println("Machine Maintenance is really important");
 		System.out.println("Lets check your machines health status");
@@ -61,7 +61,6 @@ public class Main {
 			user=new User(email,password,Cpassword);
 			
 			crud.addUser(user);
-//			crud.addMapUser(0, user);
 			
 			}
 			break;
@@ -83,13 +82,13 @@ public class Main {
             List<Machines> lists =  new ArrayList<Machines>();
         		
         	
-//        		int iD;
-//        		String machineName;
-//        		String maintenanceTime;
-//        		
+        		int iD;
+        		String machineName;
+        		String maintenanceTime;
+////        		
         		int value = 0;
         		BufferedReader br1=new BufferedReader(new InputStreamReader(System.in));
-//        		Manualmachines manualmachines = new Manualmachines();        		
+        		Manualmachines manualmachines = new Manualmachines();        		
         		do {
 
         		System.out.println("Lets run through quick input for your machines");
@@ -100,13 +99,24 @@ public class Main {
                 System.out.println("Enter the time when it would need maintenance");
         		maintenanceTime = br1.readLine();
         		
-//        		Machines machines = new Machines(iD, maintenanceTime, maintenanceTime);
+        		Machines machines = new Machines(iD, maintenanceTime, maintenanceTime);
         		machines.setID(iD);
         		machines.setMachineName(machineName);
         		machines.setMaintenanceTime(maintenanceTime);
         			
-//        			lists = manualmachines.addmachines(machines);
+        			lists = manualmachines.addmachines(machines);
+        			
+        			WriteExcel excel =new WriteExcel();
+        			excel.insertMachines(machines);
         			}while(iD!=0);
+        		
+
+    			
+    			for(Machines std:lists) {
+    				System.out.println("Display");
+    				System.out.println(std.getID());
+    				System.out.println(std.getMachineName());
+    				System.out.println(std.getMaintenanceTime());
 
         				System.out.println("You rely us on and we will stand up to your Trust");
                         System.out.println("Thank you for choosing our services");
@@ -114,33 +124,34 @@ public class Main {
                         break;
                         
            		}
+		}
 		case 4:
-            List<Machines> lists =  new ArrayList<Machines>();
+//            List<Machines> lists =  new ArrayList<Machines>();
 
 		
 		
                         
 //                        Machines machines = new Machines(iD, maintenanceTime, maintenanceTime);
 
-            			lists = manualmachines.addmachines(machines);
+//            			lists = manualmachines.getAllMachines(machines);
 
             			
         			
-        			for(Machines std:lists) {
-        				System.out.println("Display");
-        				System.out.println(std.getID());
-        				System.out.println(std.getMachineName());
-        				System.out.println(std.getMaintenanceTime());
-        				
+//        			for(Machines std:lists) {
+//        				System.out.println("Display");
+//        				System.out.println(std.getID());
+//        				System.out.println(std.getMachineName());
+//        				System.out.println(std.getMaintenanceTime());
+//        				
         				break;
-        			}
+//        			}
         			
         					
 
 		
 		case 5:
 			WriteExcel ex=new WriteExcel();
-			ex.writefromExcel("Machine.xls");
+//			ex.writefromExcel("Machine.xls");
               break;
 		}
 		System.out.println("Do you want to continue");

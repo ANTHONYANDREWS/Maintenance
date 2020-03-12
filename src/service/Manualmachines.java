@@ -16,7 +16,7 @@ public List<Machines> addmachines(Machines machines) {
 		return lists;	
 		}
 
-public List<Machines> getAllMachines(){
+public List<Machines> getAllMachines(Machines machines){
 	return lists;
 	}
 
