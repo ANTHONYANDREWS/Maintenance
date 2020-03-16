@@ -3,22 +3,22 @@ package Model;
 public class Machines {
 	
 		
-		public int ID;
+		public int id;
 		public String machineName;
 		public String maintenanceTime;
 		
 		public Machines(int iD, String machineName, String maintenanceTime) {
-			ID = iD;
+			this.id = iD;
 			this.machineName = machineName;
 			this.maintenanceTime = maintenanceTime;
 		}
 
 		public int getID() {
-			return ID;
+			return id;
 		}
 
 		public void setID(int iD) {
-			ID = iD;
+			this.id = iD;
 		}
 
 		public String getMachineName() {
